@@ -876,6 +876,230 @@
         transform: translateX(-50%);
       }
     }
+
+    /* Update services section styles */
+    .services-section {
+      background-color: #0f3460;
+      padding: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+    }
+
+    .services-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: #e94560;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Update services carousel styles */
+    .services-carousel {
+      display: flex;
+      gap: 2rem;
+      transition: transform 0.5s ease;
+      padding: 1rem 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .service-card {
+      flex: 0 0 calc(33.333% - 1.33rem);
+      background: #1a1a2e;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      border: 1px solid #e94560;
+      cursor: pointer;
+      min-width: 300px;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .service-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .service-content {
+      padding: 1.5rem;
+    }
+
+    .service-title {
+      color: #e94560;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .service-description {
+      color: #ffffff;
+      line-height: 1.6;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .service-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(26, 26, 46, 0.8);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .service-nav:hover {
+      background: #e94560;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .service-prev {
+      left: 0;
+    }
+
+    .service-next {
+      right: 0;
+    }
+
+    /* Service Details Modal */
+    .service-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .service-modal.active {
+      display: flex;
+    }
+
+    .service-modal-content {
+      background: #1a1a2e;
+      border-radius: 8px;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      border: 2px solid #e94560;
+    }
+
+    .service-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+    }
+
+    .service-modal-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-modal-title {
+      color: #e94560;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .service-modal-description {
+      color: #ffffff;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .service-modal-details {
+      color: #ffffff;
+      line-height: 1.6;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .service-modal-details h3 {
+      color: #e94560;
+      margin: 1.5rem 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .service-modal-details ul {
+      list-style-type: none;
+      padding-left: 1rem;
+    }
+
+    .service-modal-details li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .service-modal-details li:before {
+      content: "•";
+      color: #e94560;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Add map styles */
+    .map-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-top: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      border: 2px solid #e94560;
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 46, 0.3);
+      pointer-events: none;
+      z-index: 1;
+    }
   </style>
   <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
@@ -902,17 +1126,14 @@
       Uday Health Care, In front of 3rd Gate 28, BN PAC, Kunaira, Etawah, Uttar Pradesh 206002
     </div>
     <div class="top-bar-right">
-      <a href="https://www.facebook.com/udayhealthcare" target="_blank" class="social-icon">
+      <a href="https://www.facebook.com/profile.php?id=61559867442124&mibextid=ZbWKwL" target="_blank" class="social-icon">
         <i class="fab fa-facebook"></i>
       </a>
-      <a href="https://www.instagram.com/udayhealthcare" target="_blank" class="social-icon">
+      <a href="https://www.instagram.com/uday_health_care_" target="_blank" class="social-icon">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="https://www.linkedin.com/company/udayhealthcare" target="_blank" class="social-icon">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://twitter.com/udayhealthcare" target="_blank" class="social-icon">
-        <i class="fab fa-twitter"></i>
+      <a href="https://g.co/kgs/MHMx6eo" target="_blank" class="social-icon">
+        <i class="fab fa-google"></i>
       </a>
     </div>
   </div>
@@ -948,26 +1169,25 @@
     </div>
   </section>
 
-
-
-  <section class="u-align-center u-clearfix u-section-2" id="carousel_1559">
-    <div class="u-clearfix u-sheet u-sheet-1">
-      <h1 class="u-custom-font u-font-lato u-text u-text-palette-4-base u-text-1">Our Services</h1>
-      <p class="u-text u-text-grey-50 u-text-2">Our Center offers you and your family the complete range of neurological services.</p>
-      
-      <div class="services-grid">
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="services-container">
+      <h1 class="services-title">Our Services</h1>
+      <button class="service-nav service-prev" onclick="scrollServices('prev')">❮</button>
+      <button class="service-nav service-next" onclick="scrollServices('next')">❯</button>
+      <div class="services-carousel">
         <!-- Parkinson's Disease -->
-        <div class="service-card">
+        <div class="service-card" onclick="openServiceModal(0)">
           <img src="images/parkinsons.jpeg" alt="Parkinson's Disease" class="service-image">
           <div class="service-content">
             <h3 class="service-title">Parkinson's Disease</h3>
-            <p class="service-description">Comprehensive care for Parkinson's disease including medication management, physical therapy, and advanced treatment options.</p>
+            
           </div>
         </div>
 
         <!-- Migraine -->
-        <div class="service-card">
-          <img src="images/migraine.jpg" alt="Migraine Treatment" class="service-image">
+        <div class="service-card" onclick="openServiceModal(1)">
+          <img src="images/migraine.jpeg" alt="Migraine Treatment" class="service-image">
           <div class="service-content">
             <h3 class="service-title">Migraine Treatment</h3>
             <p class="service-description">Specialized treatment plans for chronic and acute migraines, including preventive and abortive therapies.</p>
@@ -975,97 +1195,36 @@
         </div>
 
         <!-- Epilepsy -->
-        <div class="service-card">
+        <div class="service-card" onclick="openServiceModal(2)">
           <img src="images/epilepsy.jpg" alt="Epilepsy Management" class="service-image">
           <div class="service-content">
             <h3 class="service-title">Epilepsy Management</h3>
             <p class="service-description">Expert care for epilepsy patients with advanced diagnostic tools and personalized treatment plans.</p>
           </div>
         </div>
-
-        <!-- Stroke Care -->
-        <div class="service-card">
-          <img src="images/stroke.jpg" alt="Stroke Care" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Stroke Care</h3>
-            <p class="service-description">Comprehensive stroke care including emergency treatment, rehabilitation, and preventive care.</p>
-          </div>
-        </div>
-
-        <!-- Multiple Sclerosis -->
-        <div class="service-card">
-          <img src="images/ms.jpg" alt="Multiple Sclerosis" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Multiple Sclerosis</h3>
-            <p class="service-description">Specialized care for MS patients with advanced treatment options and symptom management.</p>
-          </div>
-        </div>
-
-        <!-- Alzheimer's Disease -->
-        <div class="service-card">
-          <img src="images/alzheimers.jpg" alt="Alzheimer's Disease" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Alzheimer's Disease</h3>
-            <p class="service-description">Comprehensive care for Alzheimer's patients including cognitive therapy and family support.</p>
-          </div>
-        </div>
-
-        <!-- Neuropathy -->
-        <div class="service-card">
-          <img src="images/neuropathy.jpg" alt="Neuropathy" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Neuropathy</h3>
-            <p class="service-description">Treatment for various types of neuropathy including diabetic and peripheral neuropathy.</p>
-          </div>
-        </div>
-
-        <!-- Headache Disorders -->
-        <div class="service-card">
-          <img src="images/headache.jpg" alt="Headache Disorders" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Headache Disorders</h3>
-            <p class="service-description">Specialized care for chronic headache disorders including tension headaches and cluster headaches.</p>
-          </div>
-        </div>
-
-        <!-- Movement Disorders -->
-        <div class="service-card">
-          <img src="images/movement.jpg" alt="Movement Disorders" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Movement Disorders</h3>
-            <p class="service-description">Treatment for various movement disorders including dystonia, tremors, and tic disorders.</p>
-          </div>
-        </div>
-
-        <!-- Memory Disorders -->
-        <div class="service-card">
-          <img src="images/memory.jpg" alt="Memory Disorders" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Memory Disorders</h3>
-            <p class="service-description">Comprehensive evaluation and treatment for memory-related disorders and cognitive impairments.</p>
-          </div>
-        </div>
-
-        <!-- Sleep Disorders -->
-        <div class="service-card">
-          <img src="images/sleep.jpg" alt="Sleep Disorders" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Sleep Disorders</h3>
-            <p class="service-description">Diagnosis and treatment of neurological sleep disorders including insomnia and sleep apnea.</p>
-          </div>
-        </div>
-
-        <!-- Neuromuscular Disorders -->
-        <div class="service-card">
-          <img src="images/neuromuscular.jpg" alt="Neuromuscular Disorders" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Neuromuscular Disorders</h3>
-            <p class="service-description">Specialized care for conditions affecting muscles and nerves, including ALS and myasthenia gravis.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
+
+  <!-- Service Details Modal -->
+  <div class="service-modal" id="serviceModal">
+    <div class="service-modal-content">
+      <button class="service-modal-close" onclick="closeServiceModal()">&times;</button>
+      <img class="service-modal-image" src="" alt="">
+      <h2 class="service-modal-title"></h2>
+      <p class="service-modal-description"></p>
+      <div class="service-modal-details">
+        <h3>Treatment Options</h3>
+        <ul class="treatment-options"></ul>
+        <h3>Diagnostic Procedures</h3>
+        <ul class="diagnostic-procedures"></ul>
+        <h3>Preventive Care</h3>
+        <ul class="preventive-care"></ul>
+      </div>
+    </div>
+  </div>
+
+
 
     <!-- Know Your Doctor Section -->
     <section class="doctor-section">
@@ -1129,7 +1288,7 @@
             <div class="health-issues-scroll">
               <div class="health-issue-item">
                 <div class="health-issue-image-container">
-                  <img src="images/parkinsons.jpg" alt="Parkinson's Disease" class="health-issue-image">
+                  <img src="images/parkinsons.jpeg" alt="Parkinson's Disease" class="health-issue-image">
                 </div>
                 <div class="health-issue-name">Parkinson's Disease</div>
               </div>
@@ -1306,10 +1465,22 @@
     <button class="lightbox-nav lightbox-next" onclick="nextImage()">❯</button>
   </div>
 
+   <!-- Contact section -->
   <section class="u-clearfix u-section-9" id="carousel_204c">
     <div class="u-clearfix u-sheet u-sheet-1">
       <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
-      
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.123456789012!2d79.12345678901234!3d26.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDA3JzI0LjQiTiA3OcKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div class="map-overlay"></div>
+        </div>
       </div>
       <div class="u-expanded-width u-list u-list-1">
         <div class="u-repeater u-repeater-1">
@@ -1372,7 +1543,7 @@
                   </g>
                 </svg></span>
               <h5 class="u-text u-text-body-alt-color u-text-8">Hours</h5>
-              <p class="u-text u-text-body-alt-color u-text-9">Mon – Sun <br>8AM – 8 PM</p>
+              <p class="u-text u-text-body-alt-color u-text-9">Mon – Sun <br>10AM – 6 PM</p>
             </div>
           </div>
         </div>
@@ -1383,8 +1554,14 @@
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-1e54">
     <div class="u-clearfix u-sheet u-sheet-1">
       <p class="u-small-text u-text u-text-variant u-text-1">Copyright © 2025 Uday HealthCare. All Rights Reserved.</p>
+      <p class="u-small-text u-text u-text-variant u-text-2" style="margin-top: 10px;">
+        Developed by <a href="https://linkedin.com/in/abhinayy0" target="_blank" style="color: #e94560; text-decoration: none;">Abhinay Yadav</a>
+      </p>
     </div>
   </footer>
+
+
+
 
   <script>
     // Mobile menu toggle
@@ -1436,6 +1613,254 @@
           prevImage();
         } else if (e.key === 'ArrowRight') {
           nextImage();
+        }
+      }
+    });
+
+    // Update service carousel functionality
+    const servicesCarousel = document.querySelector('.services-carousel');
+    const serviceCards = document.querySelectorAll('.service-card');
+    const serviceModal = document.getElementById('serviceModal');
+    const serviceModalImage = serviceModal.querySelector('.service-modal-image');
+    const serviceModalTitle = serviceModal.querySelector('.service-modal-title');
+    const serviceModalDescription = serviceModal.querySelector('.service-modal-description');
+    const treatmentOptions = serviceModal.querySelector('.treatment-options');
+    const diagnosticProcedures = serviceModal.querySelector('.diagnostic-procedures');
+    const preventiveCare = serviceModal.querySelector('.preventive-care');
+
+    const serviceDetails = [
+      {
+        title: "Parkinson's Disease",
+        description: "Comprehensive care for Parkinson's disease including medication management, physical therapy, and advanced treatment options.",
+        treatments: [
+          "Medication management and optimization",
+          "Deep brain stimulation therapy",
+          "Physical and occupational therapy",
+          "Speech and swallowing therapy",
+          "Cognitive behavioral therapy"
+        ],
+        diagnostics: [
+          "Neurological examination",
+          "DaTscan imaging",
+          "Blood tests and lab work",
+          "Movement disorder assessment",
+          "Cognitive function testing"
+        ],
+        prevention: [
+          "Regular exercise program",
+          "Nutrition counseling",
+          "Stress management techniques",
+          "Sleep hygiene education",
+          "Regular follow-up care"
+        ]
+      },
+      {
+        title: "Migraine Treatment",
+        description: "Specialized treatment plans for chronic and acute migraines, including preventive and abortive therapies.",
+        treatments: [
+          "Acute medication management",
+          "Preventive medication therapy",
+          "Botox injections",
+          "Nerve block procedures",
+          "Lifestyle modification guidance"
+        ],
+        diagnostics: [
+          "Headache diary analysis",
+          "Neurological examination",
+          "Imaging studies (MRI/CT)",
+          "Blood tests",
+          "Trigger identification"
+        ],
+        prevention: [
+          "Trigger avoidance education",
+          "Stress management techniques",
+          "Sleep hygiene counseling",
+          "Dietary modifications",
+          "Regular exercise program"
+        ]
+      },
+      {
+        title: "Epilepsy Management",
+        description: "Expert care for epilepsy patients with advanced diagnostic tools and personalized treatment plans.",
+        treatments: [
+          "Anti-seizure medication management",
+          "Vagus nerve stimulation",
+          "Ketogenic diet counseling",
+          "Surgical evaluation",
+          "Behavioral therapy"
+        ],
+        diagnostics: [
+          "EEG monitoring",
+          "Video EEG telemetry",
+          "Brain imaging (MRI/CT)",
+          "Blood tests",
+          "Genetic testing"
+        ],
+        prevention: [
+          "Medication adherence monitoring",
+          "Seizure trigger identification",
+          "Safety education",
+          "Lifestyle modification",
+          "Regular follow-up care"
+        ]
+      },
+      {
+        title: "Stroke Care",
+        description: "Comprehensive stroke care including emergency treatment, rehabilitation, and preventive care.",
+        treatments: [
+          "Acute stroke intervention",
+          "Thrombolytic therapy",
+          "Rehabilitation therapy",
+          "Medication management",
+          "Lifestyle modification"
+        ],
+        diagnostics: [
+          "Brain imaging (CT/MRI)",
+          "Carotid ultrasound",
+          "Echocardiogram",
+          "Blood tests",
+          "Vascular studies"
+        ],
+        prevention: [
+          "Blood pressure management",
+          "Cholesterol control",
+          "Diabetes management",
+          "Smoking cessation",
+          "Regular exercise program"
+        ]
+      },
+      {
+        title: "Multiple Sclerosis",
+        description: "Specialized care for MS patients with advanced treatment options and symptom management.",
+        treatments: [
+          "Disease-modifying therapies",
+          "Symptom management",
+          "Physical therapy",
+          "Occupational therapy",
+          "Cognitive rehabilitation"
+        ],
+        diagnostics: [
+          "MRI scans",
+          "Lumbar puncture",
+          "Evoked potential tests",
+          "Blood tests",
+          "Neurological examination"
+        ],
+        prevention: [
+          "Regular monitoring",
+          "Vitamin D supplementation",
+          "Exercise program",
+          "Stress management",
+          "Healthy lifestyle counseling"
+        ]
+      },
+      {
+        title: "Alzheimer's Disease",
+        description: "Comprehensive care for Alzheimer's patients including cognitive therapy and family support.",
+        treatments: [
+          "Medication management",
+          "Cognitive therapy",
+          "Behavioral therapy",
+          "Family counseling",
+          "Support group referral"
+        ],
+        diagnostics: [
+          "Cognitive testing",
+          "Brain imaging (MRI/CT)",
+          "Blood tests",
+          "Genetic testing",
+          "Neurological examination"
+        ],
+        prevention: [
+          "Cognitive exercises",
+          "Physical activity program",
+          "Healthy diet counseling",
+          "Social engagement",
+          "Regular medical check-ups"
+        ]
+      }
+    ];
+
+    function scrollServices(direction) {
+      const cardWidth = serviceCards[0].offsetWidth + 32; // Width + gap
+      const maxIndex = serviceCards.length - 1;
+      
+      if (direction === 'prev') {
+        currentIndex = (currentIndex - 1 + serviceCards.length) % serviceCards.length;
+      } else {
+        currentIndex = (currentIndex + 1) % serviceCards.length;
+      }
+      
+      servicesCarousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
+
+    // Auto-scroll every 5 seconds
+    setInterval(() => {
+      scrollServices('next');
+    }, 5000);
+
+    // Pause auto-scroll on hover
+    servicesCarousel.addEventListener('mouseenter', () => {
+      clearInterval(autoScroll);
+    });
+
+    servicesCarousel.addEventListener('mouseleave', () => {
+      autoScroll = setInterval(() => {
+        scrollServices('next');
+      }, 5000);
+    });
+
+    function openServiceModal(index) {
+      const service = serviceDetails[index];
+      serviceModalImage.src = serviceCards[index].querySelector('img').src;
+      serviceModalTitle.textContent = service.title;
+      serviceModalDescription.textContent = service.description;
+      
+      // Clear previous lists
+      treatmentOptions.innerHTML = '';
+      diagnosticProcedures.innerHTML = '';
+      preventiveCare.innerHTML = '';
+      
+      // Populate lists
+      service.treatments.forEach(treatment => {
+        const li = document.createElement('li');
+        li.textContent = treatment;
+        treatmentOptions.appendChild(li);
+      });
+      
+      service.diagnostics.forEach(diagnostic => {
+        const li = document.createElement('li');
+        li.textContent = diagnostic;
+        diagnosticProcedures.appendChild(li);
+      });
+      
+      service.prevention.forEach(prevention => {
+        const li = document.createElement('li');
+        li.textContent = prevention;
+        preventiveCare.appendChild(li);
+      });
+      
+      serviceModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeServiceModal() {
+      serviceModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal when clicking outside
+    serviceModal.addEventListener('click', (e) => {
+      if (e.target === serviceModal) {
+        closeServiceModal();
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (serviceModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeServiceModal();
         }
       }
     });
