@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Editor - Uday Health Care</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #0066CC;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      border-left: 4px solid #0066CC;
+    }
+
+    .section h2 {
+      color: #0066CC;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="url"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #0066CC;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .lang-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .lang-field {
+      background: white;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    .lang-field label {
+      color: #0066CC;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 2px solid #eee;
+    }
+
+    button {
+      padding: 15px 40px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-save {
+      background: #0066CC;
+      color: white;
+    }
+
+    .btn-save:hover {
+      background: #004C99;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,102,204,0.3);
+    }
+
+    .btn-preview {
+      background: #28a745;
+      color: white;
+    }
+
+    .btn-preview:hover {
+      background: #218838;
+    }
+
+    .btn-download {
+      background: #17a2b8;
+      color: white;
+    }
+
+    .btn-download:hover {
+      background: #138496;
+    }
+
+    .alert {
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .alert.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .alert.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    .instructions {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .instructions h3 {
+      color: #856404;
+      margin-bottom: 10px;
+    }
+
+    .instructions ol {
+      margin-left: 20px;
+      color: #856404;
+    }
+
+    .instructions li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .lang-group {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏥 Content Editor - Uday Health Care</h1>
+    <p class="subtitle">Edit your website content easily without coding knowledge</p>
+
+    <div class="instructions">
+      <h3>📝 How to Use:</h3>
+      <ol>
+        <li>Edit the text in the fields below (both English and Hindi)</li>
+        <li>Click "Save Changes" to save your edits</li>
+        <li>Click "Download Updated Website" to get the updated HTML file</li>
+        <li>Upload the downloaded file to your hosting service</li>
+      </ol>
+    </div>
+
+    <div id="alert" class="alert"></div>
+
+    <!-- Contact Information -->
+    <div class="section">
+      <h2>📞 Contact Information</h2>
+      
+      <div class="field">
+        <label>Phone Number 1</label>
+        <input type="tel" id="phone1" value="+91 9058786592">
+      </div>
+
+      <div class="field">
+        <label>Phone Number 2</label>
+        <input type="tel" id="phone2" value="+91 7248282028">
+      </div>
+
+      <div class="field">
+        <label>Address (English)</label>
+        <input type="text" id="address_en" value="In front of 3rd Gate 28, BN PAC, Kunaira, Etawah, Uttar Pradesh 206002">
+      </div>
+
+      <div class="field">
+        <label>Address (Hindi)</label>
+        <input type="text" id="address_hi" value="तीसरे गेट 28 के सामने, बीएन पीएसी, कुनैरा, इटावा, उत्तर प्रदेश 206002">
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="section">
+      <h2>🏠 Hero Section (Main Banner)</h2>
+      
+      <div class="lang-group">
+        <div class="lang-field">
+          <label>Main Heading (English)</label>
+          <input type="text" id="hero_title_en" value="Welcome to Uday Health Care">
+        </div>
+        <div class="lang-field">
+          <label>Main Heading (Hindi)</label>
+          <input type="text" id="hero_title_hi" value="उदय हेल्थ केयर में आपका स्वागत है">
+        </div>
+      </div>
+
+      <div class="lang-group">
+        <div class="lang-field">
+          <label>Subtitle (English)</label>
+          <input type="text" id="hero_subtitle_en" value="Your Trusted Partner in Health & Wellness">
+        </div>
+        <div class="lang-field">
+          <label>Subtitle (Hindi)</label>
+          <input type="text" id="hero_subtitle_hi" value="स्वास्थ्य और कल्याण में आपका विश्वसनीय साथी">
+        </div>
+      </div>
+
+      <div class="lang-group">
+        <div class="lang-field">
+          <label>Description (English)</label>
+          <textarea id="hero_desc_en">Comprehensive medical care with state-of-the-art facilities including Neurology, Pharmacy, and Advanced Diagnostics</textarea>
+        </div>
+        <div class="lang-field">
+          <label>Description (Hindi)</label>
+          <textarea id="hero_desc_hi">न्यूरोलॉजी, फार्मेसी और उन्नत डायग्नोस्टिक्स सहित अत्याधुनिक सुविधाओं के साथ व्यापक चिकित्सा देखभाल</textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doctor Information -->
+    <div class="section">
+      <h2>👨‍⚕️ Doctor Information</h2>
+      
+      <div class="lang-group">
+        <div class="lang-field">
+          <label>Doctor Name (English)</label>
+          <input type="text" id="doctor_name_en" value="Dr. Navneet Agarwal">
+        </div>
+        <div class="lang-field">
+          <label>Doctor Name (Hindi)</label>
+          <input type="text" id="doctor_name_hi" value="डॉ. नवनीत अग्रवाल">
+        </div>
+      </div>
+
+      <div class="lang-group">
+        <div class="lang-field">
+          <label>Qualification (English)</label>
+          <input type="text" id="doctor_qual_en" value="Neurologist (MBBS, MD)">
+        </div>
+        <div class="lang-field">
+          <label>Qualification (Hindi)</label>
+          <input type="text" id="doctor_qual_hi" value="न्यूरोलॉजिस्ट (एमबीबीएस, एमडी)">
+        </div>
+      </div>
+
+      <div class="lang-group">
+        <div class="lang-field">
+          <label>Doctor Description (English)</label>
+          <textarea id="doctor_desc_en">Dr. Navneet Agarwal is a highly experienced and renowned neurologist from Agra with extensive expertise in treating neurological disorders. With years of dedicated practice, Dr. Agarwal specializes in the diagnosis and treatment of conditions such as Parkinson's disease, epilepsy, migraine, stroke, and other neurological ailments.</textarea>
+        </div>
+        <div class="lang-field">
+          <label>Doctor Description (Hindi)</label>
+          <textarea id="doctor_desc_hi">डॉ. नवनीत अग्रवाल आगरा के एक अत्यधिक अनुभवी और प्रसिद्ध न्यूरोलॉजिस्ट हैं जिनके पास न्यूरोलॉजिकल विकारों के उपचार में व्यापक विशेषज्ञता है। समर्पित अभ्यास के वर्षों के साथ, डॉ. अग्रवाल पार्किंसंस रोग, मिर्गी, माइग्रेन, स्ट्रोक और अन्य न्यूरोलॉजिकल बीमारियों जैसी स्थितियों के निदान और उपचार में विशेषज्ञ हैं।</textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="section">
+      <h2>🌐 Social Media Links</h2>
+      
+      <div class="field">
+        <label>Facebook URL</label>
+        <input type="url" id="facebook_url" value="https://www.facebook.com/profile.php?id=61559867442124">
+      </div>
+
+      <div class="field">
+        <label>Instagram URL</label>
+        <input type="url" id="instagram_url" value="https://www.instagram.com/uday_health_care_">
+      </div>
+
+      <div class="field">
+        <label>Google Maps/Review URL</label>
+        <input type="url" id="google_url" value="https://g.co/kgs/MHMx6eo">
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="btn-group">
+      <button class="btn-save" onclick="saveChanges()">💾 Save Changes</button>
+      <button class="btn-preview" onclick="previewWebsite()">👁️ Preview Website</button>
+      <button class="btn-download" onclick="downloadWebsite()">⬇️ Download Updated Website</button>
+    </div>
+  </div>
+
+  <script>
+    // Load saved data from localStorage
+    window.onload = function() {
+      const savedData = localStorage.getItem('websiteContent');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        Object.keys(data).forEach(key => {
+          const element = document.getElementById(key);
+          if (element) {
+            element.value = data[key];
+          }
+        });
+        showAlert('Previous changes loaded successfully!', 'info');
+      }
+    };
+
+    function saveChanges() {
+      const data = {
+        phone1: document.getElementById('phone1').value,
+        phone2: document.getElementById('phone2').value,
+        address_en: document.getElementById('address_en').value,
+        address_hi: document.getElementById('address_hi').value,
+        hero_title_en: document.getElementById('hero_title_en').value,
+        hero_title_hi: document.getElementById('hero_title_hi').value,
+        hero_subtitle_en: document.getElementById('hero_subtitle_en').value,
+        hero_subtitle_hi: document.getElementById('hero_subtitle_hi').value,
+        hero_desc_en: document.getElementById('hero_desc_en').value,
+        hero_desc_hi: document.getElementById('hero_desc_hi').value,
+        doctor_name_en: document.getElementById('doctor_name_en').value,
+        doctor_name_hi: document.getElementById('doctor_name_hi').value,
+        doctor_qual_en: document.getElementById('doctor_qual_en').value,
+        doctor_qual_hi: document.getElementById('doctor_qual_hi').value,
+        doctor_desc_en: document.getElementById('doctor_desc_en').value,
+        doctor_desc_hi: document.getElementById('doctor_desc_hi').value,
+        facebook_url: document.getElementById('facebook_url').value,
+        instagram_url: document.getElementById('instagram_url').value,
+        google_url: document.getElementById('google_url').value
+      };
+
+      localStorage.setItem('websiteContent', JSON.stringify(data));
+      showAlert('✅ Changes saved successfully! Now click "Download Updated Website" to get the updated file.', 'success');
+    }
+
+    function previewWebsite() {
+      saveChanges();
+      window.open('index.html', '_blank');
+    }
+
+    function downloadWebsite() {
+      const data = JSON.parse(localStorage.getItem('websiteContent'));
+      if (!data) {
+        showAlert('⚠️ Please save your changes first!', 'info');
+        return;
+      }
+
+      // Read the original index.html and replace content
+      fetch('index.html')
+        .then(response => response.text())
+        .then(html => {
+          // Replace phone numbers
+          html = html.replace(/\+91 9058786592/g, data.phone1);
+          html = html.replace(/\+91 7248282028/g, data.phone2);
+          
+          // Replace addresses
+          html = html.replace(/In front of 3rd Gate 28, BN PAC, Kunaira, Etawah, Uttar Pradesh 206002/g, data.address_en);
+          html = html.replace(/तीसरे गेट 28 के सामने, बीएन पीएसी, कुनैरा, इटावा, उत्तर प्रदेश 206002/g, data.address_hi);
+          
+          // Replace hero section
+          html = html.replace(/data-en="Welcome to Uday Health Care"/g, `data-en="${data.hero_title_en}"`);
+          html = html.replace(/data-hi="उदय हेल्थ केयर में आपका स्वागत है"/g, `data-hi="${data.hero_title_hi}"`);
+          html = html.replace(/data-en="Your Trusted Partner in Health & Wellness"/g, `data-en="${data.hero_subtitle_en}"`);
+          html = html.replace(/data-hi="स्वास्थ्य और कल्याण में आपका विश्वसनीय साथी"/g, `data-hi="${data.hero_subtitle_hi}"`);
+          
+          // Replace doctor info
+          html = html.replace(/data-en="Dr\. Navneet Agarwal"/g, `data-en="${data.doctor_name_en}"`);
+          html = html.replace(/data-hi="डॉ\. नवनीत अग्रवाल"/g, `data-hi="${data.doctor_name_hi}"`);
+          
+          // Replace social media URLs
+          html = html.replace(/https:\/\/www\.facebook\.com\/profile\.php\?id=61559867442124/g, data.facebook_url);
+          html = html.replace(/https:\/\/www\.instagram\.com\/uday_health_care_/g, data.instagram_url);
+          html = html.replace(/https:\/\/g\.co\/kgs\/MHMx6eo/g, data.google_url);
+
+          // Create download
+          const blob = new Blob([html], { type: 'text/html' });
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'index.html';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+
+          showAlert('✅ Website downloaded! Upload this file to your hosting service.', 'success');
+        })
+        .catch(error => {
+          showAlert('❌ Error: Could not generate file. Make sure you are running this from a web server.', 'info');
+          console.error(error);
+        });
+    }
+
+    function showAlert(message, type) {
+      const alert = document.getElementById('alert');
+      alert.textContent = message;
+      alert.className = `alert ${type}`;
+      alert.style.display = 'block';
+      
+      setTimeout(() => {
+        alert.style.display = 'none';
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
